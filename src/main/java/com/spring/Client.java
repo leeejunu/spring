@@ -12,13 +12,10 @@ public class Client {
     public static void main(String[] args) throws IOException {
 
         BeanFactory bc = new AnnotationConfigApplicationContext(ObjectFactory.class);
+        PaymentService paymentService = bc.getBean(PaymentService.class);
 
-        ObjectFactory objectFactory = new ObjectFactory();
-        PaymentService paymentService = objectFactory.paymentService();
-        Payment payment = paymentService.prepare(100L, "USD", BigDecimal.valueOf(50.7));
+        Payment payment1 = paymentService.prepare(100L, "USD", BigDecimal.valueOf(50.7));
 
-
-
-        System.out.println(payment);
+        System.out.println(payment1);
     }
 }
